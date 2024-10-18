@@ -3,38 +3,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const input = document.querySelector("input");
     const dataDiv = document.getElementById("data");
 
-    // Gestion du clic sur le bouton "afficher"
     button.addEventListener("click", async () => {
-        const city = input.value.trim(); // On récupère la valeur de l'input
+        const city = input.value.trim();
 
         if (city === "") {
-            dataDiv.innerHTML = "<p style='color: red;'>Veuillez entrer une ville.</p>";
+            dataDiv.innerHTML = "<p class='error'>Veuillez entrer une ville.</p>";
             return;
         }
 
-        // URL de l'API de prevision-meteo.ch avec le nom de la ville
+        // Affichage du message de chargement
+        dataDiv.innerHTML = "<p>Chargement des données météo...</p>";
+
         const apiUrl = `https://www.prevision-meteo.ch/services/json/${city}`;
 
         try {
-            // Fetch des données météo
             const response = await fetch(apiUrl);
             if (!response.ok) {
                 throw new Error("Ville introuvable");
             }
 
             const weatherData = await response.json();
-
-            // Affichage des données dans le div
             displayWeatherData(weatherData);
         } catch (error) {
-            dataDiv.innerHTML = `<p style='color: red;'>Erreur: ${error.message}</p>`;
+            dataDiv.innerHTML = `<p class='error'>Erreur: ${error.message}</p>`;
         }
     });
 
-    // Fonction pour afficher les données météo
     function displayWeatherData(data) {
         if (!data || !data.city_info) {
-            dataDiv.innerHTML = "<p style='color: red;'>Données introuvables pour cette ville.</p>";
+            dataDiv.innerHTML = "<p class='error'>Données introuvables pour cette ville.</p>";
             return;
         }
 
