@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#data {
+    margin-top: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+p.error {
+    color: red;
+}
+
+img {
+    width: 100px;
+    height: auto;
+}

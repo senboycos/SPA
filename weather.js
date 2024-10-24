@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const weatherHTML = `
             <h2>Météo pour ${name}</h2>
+            <img src="${current.icon}" alt="${current.condition}">
             <p><strong>Condition actuelle:</strong> ${current.condition}</p>
             <p><strong>Température:</strong> ${current.tmp}°C</p>
             <p><strong>Humidité:</strong> ${current.humidity}%</p>
